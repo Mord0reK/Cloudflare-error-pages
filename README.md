@@ -6,14 +6,13 @@ Strony błędu są hostowane na Cloudflare Workers. Worker stoi jako proxy pomi�
 
 ## Jak uruchomić
 
-### 1. Fork repozytorium
-1. Wejdź na stronę https://github.com/Mord0reK/Cloudflare-error-pages
-2. Kliknij przycisk "Fork" w prawym górnym rogu
-3. Wybierz swoje konto GitHub jako miejsce utworzenia forka
+### 1. Fork tego repozytorium
+1. Kliknij przycisk "Fork" w prawym górnym rogu
+2. Wybierz swoje konto GitHub jako miejsce utworzenia forka
 
 ### 2. Utworzenie Workera z forka
 1. Zaloguj się do [Cloudflare Dashboard](https://dash.cloudflare.com)
-2. Przejdź do sekcji "Workers & Pages" w menu po lewej stronie
+2. Przejdź do sekcji "Compute > Workers & Pages" w menu po lewej stronie
 3. Kliknij "Create application"
 4. Wybierz "Continue with Github"
 5. Wybierz z listy forka repozytorium, najprawdopodobniej będzie to "cloudflare-error-pages" i naciśnij next.
@@ -22,11 +21,7 @@ Strony błędu są hostowane na Cloudflare Workers. Worker stoi jako proxy pomi�
 
 ### 3. Konfiguracja trasy (Route)
 1. Przejdź do ustawień swojej domeny i skonfiguruj Worker route. Po lewej stronie panelu Cloudflare wybierz "Rules" -> "Page rules".
-
 2. Po prawej stronie pokaże się "Traffic sequence". Zjedź na dół i wybierz "Workers".
-
-3. W sekcji HTTP Routes kliknij "Add route". W polu "Route" wpisz *twoja-domena.pl/*, a w polu "Worker" wybierz swojego Workera (Najprawdopodoniej będzie to "cloudflare-error-pages").
-
+3. W sekcji HTTP Routes kliknij "Add route". W polu "Route" wpisz `*twoja-domena.pl/*`, a w polu "Worker" wybierz swojego Workera (najprawdopodobniej będzie to `cloudflare-error-pages`).
 4. ZALECANE! Rozwiń sekcję "Request limit failure mode" i wybierz "Fail open (proceed)". Dzięki temu, gdy Worker osiągnie limit zapytań (100 000 zapytań dla planu Free), użytkownicy nadal będą mogli korzystać z serwisu, ale bez niestandardowych stron błędu (wyświetli się domyślna strona błędu Cloudflare).
-
 5. Naciśnij save i zmiany będą widoczne odrazu.

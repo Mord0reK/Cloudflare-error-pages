@@ -1,5 +1,7 @@
 import html502 from "../dist/src/pages/502/index.html";
 import html1033 from "../dist/src/pages/1033/index.html";
+import html401 from "../dist/src/pages/401/index.html";
+import html403 from "../dist/src/pages/403/index.html";
 
 export default {
   async fetch(request, env, ctx) {
@@ -9,6 +11,20 @@ export default {
       if (response.status === 502) {
         return new Response(html502, {
           status: 502,
+          headers: { "Content-Type": "text/html;charset=UTF-8" }
+        });
+      }
+
+      if (response.status === 403) {
+        return new Response(html403, {
+          status: 403,
+          headers: { "Content-Type": "text/html;charset=UTF-8" }
+        });
+      }
+
+      if (response.status === 401) {
+        return new Response(html401, {
+          status: 401,
           headers: { "Content-Type": "text/html;charset=UTF-8" }
         });
       }
